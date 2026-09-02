@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="field-container image-size-container"
+  >
+    <h5
+      class="section-header"
+    >
+      Scale Image
+    </h5>
+    <span>
+      <label>
+        Width
+        <div
+          class="rc-input-number"
+        >
+          <div
+            class="rc-input-number-handler-wrap"
+          >
+            <span
+              aria-disabled="false"
+              aria-label="Increase Value"
+              class="rc-input-number-handler rc-input-number-handler-up"
+              role="button"
+              unselectable="on"
+            >
+              <span
+                class="rc-input-number-handler-up-inner"
+                unselectable="on"
+              />
+            </span>
+            <span
+              aria-disabled="false"
+              aria-label="Decrease Value"
+              class="rc-input-number-handler rc-input-number-handler-down"
+              role="button"
+              unselectable="on"
+            >
+              <span
+                class="rc-input-number-handler-down-inner"
+                unselectable="on"
+              />
+            </span>
+          </div>
+          <div
+            class="rc-input-number-input-wrap"
+          >
+            <input
+              aria-valuemin="1"
+              aria-valuenow="100"
+              autocomplete="off"
+              class="rc-input-number-input"
+              role="spinbutton"
+              step="1"
+              value="100"
+            />
+          </div>
+        </div>
+      </label>
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        stroke-width="0"
+        viewBox="0 0 512 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M376 186h-20v-40c0-55-45-100-100-100S156 91 156 146v40h-20c-22.002 0-40 17.998-40 40v200c0 22.002 17.998 40 40 40h240c22.002 0 40-17.998 40-40V226c0-22.002-17.998-40-40-40zM256 368c-22.002 0-40-17.998-40-40s17.998-40 40-40 40 17.998 40 40-17.998 40-40 40zm62.002-182H193.998v-40c0-34.004 28.003-62.002 62.002-62.002 34.004 0 62.002 27.998 62.002 62.002v40z"
+        />
+      </svg>
+      <label>
+        Height
+        <div
+          class="rc-input-number"
+        >
+          <div
+            class="rc-input-number-handler-wrap"
+          >
+            <span
+              aria-disabled="false"
+              aria-label="Increase Value"
+              class="rc-input-number-handler rc-input-number-handler-up"
+              role="button"
+              unselectable="on"
+            >
+              <span
+                class="rc-input-number-handler-up-inner"
+                unselectable="on"
+              />
+            </span>
+            <span
+              aria-disabled="false"
+              aria-label="Decrease Value"
+              class="rc-input-number-handler rc-input-number-handler-down"
+              role="button"
+              unselectable="on"
+            >
+              <span
+                class="rc-input-number-handler-down-inner"
+                unselectable="on"
+              />
+            </span>
+          </div>
+          <div
+            class="rc-input-number-input-wrap"
+          >
+            <input
+              aria-valuemin="1"
+              aria-valuenow="100"
+              autocomplete="off"
+              class="rc-input-number-input"
+              role="spinbutton"
+              step="1"
+              value="100"
+            />
+          </div>
+        </div>
+      </label>
+    </span>
+  </div>
+</div>
+`;

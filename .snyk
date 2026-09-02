@@ -1,0 +1,15 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+
+ignore:
+  SNYK-JS-QUILL-14927397:
+    - '*':
+        reason: >-
+          Not reachable from this codebase. CVE-2025-15056 affects QuillJS
+          getHTML()/getSemanticHTML(), which return unescaped HTML for formula and
+          video blots. Neither function is called here: editor content is stored
+          and consumed exclusively as Delta (structured JSON), never as exported
+          HTML. No fix is available from QuillJS maintainers; will re-evaluate
+          when a patch is released.
+        expires: 2027-09-02T00:00:00.000Z
+        created: 2026-01-27T00:00:00.000Z

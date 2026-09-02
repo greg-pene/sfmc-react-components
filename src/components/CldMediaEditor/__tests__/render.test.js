@@ -1,0 +1,15 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import CldMediaEditor from '../CldMediaEditor';
+
+describe('tests', () => {
+  it('renders no asset', () => {
+    const { container } = render(<CldMediaEditor />);
+    expect(container).toMatchSnapshot();
+  });
+  it('renders with asset', () => {
+    const mockValue = { public_id: 'test', secure_url: 'https://example.com/test.png' };
+    const { container } = render(<CldMediaEditor value={mockValue} />);
+    expect(container).toMatchSnapshot();
+  });
+});

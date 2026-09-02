@@ -1,0 +1,1 @@
+export { formsyImageScale } from './ImageScale';

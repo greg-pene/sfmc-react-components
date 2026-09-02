@@ -1,0 +1,42 @@
+@import '../../styles/variables';
+
+.banner {
+  height: 40px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+
+  svg {
+    margin-right: 12px;
+    height: 16px;
+    width: 16px;
+  }
+
+  &.error {
+    background: #ce190d;
+  }
+  &.warning {
+    background: #ff5a00;
+  }
+  &.success {
+    background: #22aa00;
+  }
+  &.primary {
+    background: #005ce4;
+  }
+  &.info {
+    background: #005ce4;
+  }
+  &.secondary {
+    color: #000;
+    background: #c6d1db;
+    svg {
+      color: #303a46;
+    }
+  }
+  &.subtle {
+    color: #000;
+    background: #f0f5f8;
+  }
+}

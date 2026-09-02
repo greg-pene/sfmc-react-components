@@ -1,0 +1,118 @@
+@import '../styles/variables';
+
+// Button styles
+.btn {
+  display: inline-flex;
+  color: $color-white;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.875rem;
+  border-radius: .25rem;
+  border: none;
+  padding: 1px 1.1em;
+  font-size: 13px;
+  transition: none;
+  cursor: pointer;
+  position: relative;
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3px $link-color;
+  }
+  &:hover {
+    color: $color-white;
+    text-decoration: none;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  + .tooltip {
+    margin-left: 5px;
+  }
+  label ~ & {
+    margin-top: 6px;
+  }
+}
+
+// Button variations
+// btn-primary : regular blue button
+// btn-secondary : white bg blue text grey border
+// btn-secondary btn-red : same with red text
+// btn-borderless : no border and no background
+.btn-primary {
+  background: $link-color;
+  color: $color-white;
+  &:hover,
+  &:active {
+    background: #005fb2;
+  }
+  &.btn-icon {
+    svg path {
+      fill: $color-white;
+    }
+  }
+}
+
+.btn-secondary {
+  background: $color-white;
+  border: 1px solid #dddbda;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: $link-color;
+  &:hover {
+    color: $link-color;
+    background: #f4f6f9;
+  }
+  &:active {
+    background: #eef1f6;
+  }
+  &.btn-icon {
+    svg path {
+      fill: $link-color;
+    }
+  }
+  &.btn-red {
+    color: #c23934;
+  }
+}
+
+.btn-borderless {
+  border: none;
+  background: none;
+  &:hover {
+    background: none;
+    text-decoration: underline;
+  }
+}
+
+.btn-primary,
+.btn-secondary {
+  &.btn-icon svg {
+    height: 14px;
+  }
+}
+
+// Buttons with icons
+.btn-icon {
+  padding: 0 10px 0 34px;
+  position: relative;
+  svg {
+    height: 19px;
+    width: 19px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+}
+
+// Sidebar buttons
+.form-image-side-panel,
+.form-video-side-panel {
+  .field-type-button .btn.btn-secondary {
+    min-width: 110px;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+
+.checkbox-container {
+  position: relative;
+  cursor: pointer;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: normal !important;
+
+  input {
+    -moz-appearance:initial;
+    position: relative;
+    visibility: hidden;
+    height: 15px;
+    width: 15px;
+    margin: 0 8px 0 0;
+    cursor: pointer;
+    &::before,
+    &::after {
+      content: '';
+      visibility: visible;
+      position: absolute;
+    }
+    &::before {
+      height: 100%;
+      width: 100%;
+      background: #f0f5f8;
+      border: 1px solid #90a0b3;
+      border-radius: 1px;
+      box-sizing: border-box;
+      top: 0;
+      left: 0;
+    }
+    &:checked {
+      &::after {
+        transform: rotate(45deg);
+        height: 6px;
+        width: 2px;
+        border-bottom: 2px solid $link-color;
+        border-right: 2px solid $link-color;
+        top: 3px;
+        left: 6px;
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: .5;
+  }
+}

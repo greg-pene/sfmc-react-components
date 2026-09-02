@@ -1,0 +1,16 @@
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.tmp
+npm-debug.log*
+yarn.lock
+package-lock.json
+coverage
+node_modules
+/test
+.editor*
+.idea/
+stories/
+src
+e2e/

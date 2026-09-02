@@ -1,0 +1,26 @@
+
+.tooltip {
+  display: inline-flex;
+  svg path {
+    fill: #142f59;
+  }
+}
+
+.rc-tooltip {
+  opacity: 1;
+}
+
+.rc-tooltip-arrow {
+  display: none;
+}
+
+.rc-tooltip-inner {
+  min-height: 0 !important;
+  max-width: 200px;
+  background: rgba(#1d2e42, 0.9);
+  border-radius: 5px;
+}
+
+.rc-tooltip-content {
+  line-height: initial;
+}

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests renders 1`] = `
+<div>
+  <div
+    class="field-container field-type-switch"
+  >
+    <label
+      class="switch-container"
+    >
+      <div
+        class="toggle-switch"
+        style="position: relative; display: inline-block; text-align: left; opacity: 1; direction: ltr; border-radius: 5px; transition: opacity 0.25s; user-select: none;"
+      >
+        <div
+          class="react-switch-bg"
+          style="height: 10px; width: 24px; margin: 0px; position: relative; background: rgb(189, 189, 189); border-radius: 5px; cursor: pointer; transition: background 0.25s;"
+        />
+        <div
+          class="react-switch-handle"
+          style="height: 10px; width: 10px; background: rgb(255, 255, 255); display: inline-block; cursor: pointer; border-radius: 50%; position: absolute; transform: translateX(0px); top: 0px; outline: 0; border: 0px; transition: background-color 0.25s, transform 0.25s, box-shadow 0.15s;"
+        />
+        <input
+          role="switch"
+          style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px;"
+          type="checkbox"
+        />
+      </div>
+      Image
+    </label>
+  </div>
+</div>
+`;

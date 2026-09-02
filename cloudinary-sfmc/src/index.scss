@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Sans', 'Roboto', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.radio .active {
+}
+
+.field .field-container {
+  .radio.styled-buttons {
+    display: flex;
+    border: 1px solid #dddbda;
+    border-radius: 3px;
+    height: 32px;
+    margin-top: 6px;
+    label {
+      flex: 1;
+      margin: 0;
+      text-align: center;
+      cursor: pointer;
+      fill: #706e6b;
+      svg {
+        width: 15px;
+        height: 100%;
+      }
+      &.active {
+        fill: #0078ff
+      }
+      .radio-label {
+        display: none;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid #dddbda;
+      }
+      &:hover {
+        background: #f4f6f9;
+      }
+    }
+  }
+
+  &.field-type-input,
+  &.image-size-container {
+    label {
+      font-size: 11px;
+      font-weight: 400;
+    }
+  }
+
+  input {
+    background: #fff;
+    border-color: #dddbda;
+  }
+}
+
+.version {
+  padding: 10px 16px;
+  background-color: #B6C6D3;
+  color: #242C36;
+  font-size: 14px;
+  font-weight: 600;
+}

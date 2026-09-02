@@ -1,0 +1,52 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "jest/globals": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "parser": "@babel/eslint-parser",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptions": {
+            "presets": ["@babel/preset-react", "@babel/preset-flow"]
+        },
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "jest"
+    ],
+    "rules": {
+        "react/prop-types": "off",
+        "no-unused-vars": "warn",
+        "indent": [
+            "error",
+            2,
+            {"SwitchCase" : 1}
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "react/jsx-uses-react": 1
+    }
+}

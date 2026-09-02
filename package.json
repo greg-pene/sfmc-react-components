@@ -1,0 +1,107 @@
+{
+  "name": "sf-component-lib2",
+  "version": "1.0.0",
+  "description": "Made with create-react-library",
+  "author": "Cloudinary",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudinary/sfmc-react-components.git"
+  },
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "start": "yarn build && chokidar 'src/**/*.js' 'src/**/*.jsx' 'src/**/*.scss' -c 'yarn build'",
+    "cloudinary-sfmc": "cd cloudinary-sfmc && yarn && yarn start",
+    "serve": "yarn start & yarn cloudinary-sfmc",
+    "cleen": "rm -fr ./service",
+    "build:all": "yarn cleen && yarn install && yarn build && cd cloudinary-sfmc && yarn && npm version patch",
+    "prepare": "run-s build",
+    "test": "run-s test:unit test:lint test:build",
+    "test:build": "run-s build",
+    "test:lint": "eslint .",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "predeploy": "cd cloudinary-sfmc && yarn install && yarn run build",
+    "deploy": "gh-pages -d cloudinary-sfmc/build",
+    "new:comp": "hygen comp new"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-flow": "^7.27.1",
+    "@rsbuild/plugin-react": "1.2.0",
+    "@rsbuild/plugin-sass": "1.2.0",
+    "@rsbuild/plugin-svgr": "1.2.0",
+    "@rslib/core": "0.5.0",
+    "@swc/cli": "^0.7.10",
+    "@swc/core": "^1.15.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "cross-env": "^7.0.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-config-standard-react": "^13.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-standard": "^5.0.0",
+    "gh-pages": "^6.3.0",
+    "jest-canvas-mock": "^2.3.1",
+    "lodash.merge": "^4.6.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
+    "sass": "^1.30.0",
+    "semver": "^7.3.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(react-quill-new|lodash-es|quill|quill-delta|parchment)/)"
+    ],
+    "moduleNameMapper": {
+      "rc-tooltip/assets/(.*)": "<rootDir>/src/__mocks__/styleMock.js",
+      "react-rangeslider/lib/index.css": "<rootDir>/src/__mocks__/styleMock.js",
+      "react-quill-new/dist/(.*)": "<rootDir>/src/__mocks__/styleMock.js"
+    }
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "fabric": "^7.2.0",
+    "formsy-react": "^2.2.1",
+    "i18next": "^19.7.0",
+    "lodash.debounce": "^4.0.8",
+    "lodash.isempty": "^4.4.0",
+    "quill-delta": "^4.2.2",
+    "rc-checkbox": "^2.3.2",
+    "rc-input-number": "^7.1.4",
+    "rc-tooltip": "^4.2.3",
+    "react-color": "^2.18.1",
+    "react-icons": "^4.1.0",
+    "react-numeric-input": "^2.2.3",
+    "react-quill-new": "^3.3.0",
+    "react-radio-group": "^3.0.3",
+    "react-rangeslider": "^2.2.0",
+    "react-select": "^5.1.0",
+    "react-slider": "^1.1.2",
+    "react-switch": "^5.0.1",
+    "use-debounce": "^6.0.1",
+    "webfontloader": "^1.6.28"
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  .react-switch-handle {
+    border: 1px solid $link-color !important;
+    box-shadow: 1px 3px 5px #0000005b;
+    margin-top: -1px;
+  }
+}

@@ -1,0 +1,40 @@
+
+.slider {
+  .rangeslider {
+    height: 4px;
+    box-shadow: none;
+    box-sizing: border-box;
+    background: #dddbda;
+    .rangeslider__fill {
+      background-color: #0078ff;
+      box-shadow: none;
+    }
+    .rangeslider__handle {
+      height: 16px;
+      width: 16px;
+      box-sizing: border-box;
+      border-width: 2px;
+      border-color: #0078ff;
+      box-shadow: none;
+      &::after {
+        top: 0;
+        left: 0;
+        display: none;
+      }
+    }
+    .rangeslider__labels {
+      margin: 0;
+    }
+  }
+  &.disabled {
+    opacity: 0.5;
+    .rangeslider {
+      .rangeslider__fill {
+        background-color: #6489b4;
+      }
+      .rangeslider__handle {
+        border-color: #6489b4;
+      }
+    }
+  }
+}

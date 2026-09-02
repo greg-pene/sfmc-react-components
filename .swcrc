@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "ecmascript",
+      "jsx": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "classic",
+        "pragma": "React.createElement",
+        "pragmaFrag": "React.Fragment"
+      }
+    },
+    "target": "es2020"
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "sourceMaps": false
+}

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests renders 1`] = `
+<div>
+  <div
+    class="field-container field-type-textarea"
+  >
+    <div
+      class="text-area"
+    >
+      <textarea />
+    </div>
+  </div>
+</div>
+`;
