@@ -39,6 +39,7 @@ function renderFieldByType(field, assetSelector) {
           imageLinkDefault={field.imageLink.default}
           prevValue={field.selectState}
           cloudName={field.cloudName}
+          previewServerUrl={field.previewServerUrl}
           openCldAssetSelector={assetSelector}
           analytics={field.analytics}
           nonEditableExts={field.nonEditableExts}

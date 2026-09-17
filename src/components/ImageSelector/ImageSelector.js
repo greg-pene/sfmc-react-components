@@ -45,6 +45,7 @@ ImageSelector.propTypes = {
   showOptimizations: types.bool,
   openCldAssetSelector: types.any,
   cloudName: types.string,
+  previewServerUrl: types.string,
   width: types.number,
   height: types.number,
   lockAspectRatio: types.bool,
@@ -295,6 +296,7 @@ function ImageSelector(rawProps) {
         buttonLabel={'Choose Image'}
         setValue={setAsset}
         openCldAssetSelector={selectImage}
+        previewServerUrl={props.previewServerUrl}
       />
       {/* Alt text */}
       <Input
