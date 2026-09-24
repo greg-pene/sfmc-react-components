@@ -67,6 +67,24 @@ This is a plain Express app — deploy it anywhere that runs Node 20+ (Render,
 a Lambda + API Gateway, etc.). Point the `cloudinary-sfmc` app at it via the
 `previewServerUrl` query parameter (see the root README).
 
+### Render
+
+A [Render Blueprint](https://render.com/docs/blueprint-spec) is included at
+the repo root (`render.yaml`) — a `web` service rooted at `preview-server/`
+with a health check on `/healthz`. To deploy:
+
+1. In the Render dashboard, create a new Blueprint from this repo (or a fork
+   of it).
+2. Fill in the env vars marked `sync: false` in `render.yaml`
+   (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`,
+   `CLOUDINARY_ACCESS_CONTROL_KEY`, `ALLOWED_ORIGINS`) directly in the
+   dashboard — none of these are committed.
+3. Set `ALLOWED_ORIGINS` to wherever `cloudinary-sfmc` is actually deployed
+   (its exact origin, no trailing slash) — not blank; blank is only for
+   local development, where it allows every origin.
+4. Once deployed, pass the resulting `https://<service>.onrender.com` URL as
+   `previewServerUrl` to the `cloudinary-sfmc` app.
+
 ## Known limitations / follow-ups
 
 - Video-to-GIF (`Video2Gif.js`) still hard-blocks restricted source videos;

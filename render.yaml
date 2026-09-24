@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: sfmc-embargo-preview-server
+    runtime: node
+    plan: free
+    rootDir: preview-server
+    buildCommand: yarn install
+    startCommand: yarn start
+    healthCheckPath: /healthz
+    envVars:
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_ACCESS_CONTROL_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: PREVIEW_TTL_SECONDS
+        value: "300"
