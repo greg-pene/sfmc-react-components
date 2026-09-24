@@ -20,6 +20,23 @@ function tokenRule(resource) {
   return resource.access_control.find((rule) => rule?.access_type === 'token');
 }
 
+// The Cloudinary Node SDK doesn't always reject with a plain Error — API
+// errors often come back shaped like `{ error: { message, http_code } }`,
+// where `.message` is undefined but the real reason is at `.error.message`.
+// Logging `err.message` alone silently produces "undefined" for exactly the
+// cases (bad/missing credentials, auth failures) most worth seeing clearly.
+function describeCloudinaryError(err) {
+  if (!err) return 'unknown error';
+  if (typeof err === 'string') return err;
+  if (err.error && err.error.message) return err.error.message;
+  if (err.message) return err.message;
+  try {
+    return JSON.stringify(err);
+  } catch {
+    return String(err);
+  }
+}
+
 /**
  * @param {object} deps
  * @param {object} deps.cloudinary - an initialized `cloudinary` v2 SDK instance
@@ -89,9 +106,10 @@ export function createApp({
         type: deliveryType
       });
     } catch (err) {
+      const message = describeCloudinaryError(err);
       // eslint-disable-next-line no-console
-      console.error(`Cloudinary resource lookup failed for ${publicId}:`, err.message);
-      res.status(404).json({ error: 'asset_not_found', message: err.message });
+      console.error(`Cloudinary resource lookup failed for ${publicId}:`, message);
+      res.status(404).json({ error: 'asset_not_found', message });
       return;
     }
 
@@ -114,9 +132,10 @@ export function createApp({
         secure: true
       });
     } catch (err) {
+      const message = describeCloudinaryError(err);
       // eslint-disable-next-line no-console
-      console.error('Failed to sign embargo preview url:', err);
-      res.status(500).json({ error: 'sign_failed', message: err.message });
+      console.error('Failed to sign embargo preview url:', message);
+      res.status(500).json({ error: 'sign_failed', message });
       return;
     }
 
@@ -133,9 +152,10 @@ export function createApp({
       res.status(403).json({ error: 'origin_not_allowed' });
       return;
     }
+    const message = describeCloudinaryError(err);
     // eslint-disable-next-line no-console
-    console.error('Unhandled error in preview server:', err);
-    res.status(500).json({ error: 'internal_error', message: err.message });
+    console.error('Unhandled error in preview server:', message);
+    res.status(500).json({ error: 'internal_error', message });
   });
 
   return app;

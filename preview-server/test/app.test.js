@@ -6,7 +6,13 @@ function fakeCloudinary({ resource, urlResult = 'https://res.cloudinary.com/demo
   return {
     api: {
       resource: async () => {
-        if (resource instanceof Error) throw resource;
+        // Real rejections from the Cloudinary SDK come in two shapes: a
+        // plain Error, or a plain object like { error: { message, ... } }
+        // with no top-level .message. Support both so tests can cover the
+        // shape that previously produced "undefined" in error logs.
+        if (resource instanceof Error || (resource && typeof resource === 'object' && 'error' in resource)) {
+          throw resource;
+        }
         return resource;
       }
     },
@@ -115,6 +121,27 @@ test('POST /api/embargo-preview-url 404s when the asset lookup fails', async () 
       body: JSON.stringify({ publicId: 'demo/missing' })
     });
     assert.equal(res.status, 404);
+  });
+});
+
+test('extracts a real message from a Cloudinary API-error-shaped rejection (no top-level .message)', async () => {
+  // This is the shape the Cloudinary SDK actually throws for API errors
+  // (e.g. missing/invalid credentials) — err.message is undefined on it,
+  // which previously logged/returned the literal string "undefined".
+  const app = createApp({
+    cloudinary: fakeCloudinary({ resource: { error: { message: 'Invalid API key', http_code: 401 } } }),
+    accessControlKey: 'test-key'
+  });
+
+  await withServer(app, async (base) => {
+    const res = await fetch(`${base}/api/embargo-preview-url`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ publicId: 'demo/hero' })
+    });
+    assert.equal(res.status, 404);
+    const body = await res.json();
+    assert.equal(body.message, 'Invalid API key');
   });
 });
 
