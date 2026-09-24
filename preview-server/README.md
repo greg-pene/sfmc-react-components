@@ -70,20 +70,37 @@ a Lambda + API Gateway, etc.). Point the `cloudinary-sfmc` app at it via the
 ### Render
 
 A [Render Blueprint](https://render.com/docs/blueprint-spec) is included at
-the repo root (`render.yaml`) — a `web` service rooted at `preview-server/`
-with a health check on `/healthz`. To deploy:
+the repo root (`render.yaml`) and defines **two** services together, so
+nobody needs to run anything locally to try this:
+
+- `sfmc-embargo-preview-server` — this service (a `web`/`node` service
+  rooted at `preview-server/`, health check on `/healthz`).
+- `sfmc-embargo-demo` — the `cloudinary-sfmc` demo app itself, built and
+  published as a static site (it's a plain Create React App). Its
+  `cloudName`/`apiKey`/`previewServerUrl` are all read from the page's own
+  URL query string at runtime, so the static build doesn't need to know
+  preview-server's URL ahead of time — see `cloudinary-sfmc/README.md`.
+
+To deploy both:
 
 1. In the Render dashboard, create a new Blueprint from this repo (or a fork
-   of it).
-2. Fill in the env vars marked `sync: false` in `render.yaml`
+   of it). Render provisions both services from the one `render.yaml`.
+2. Fill in the env vars marked `sync: false` on `sfmc-embargo-preview-server`
    (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`,
    `CLOUDINARY_ACCESS_CONTROL_KEY`, `ALLOWED_ORIGINS`) directly in the
    dashboard — none of these are committed.
-3. Set `ALLOWED_ORIGINS` to wherever `cloudinary-sfmc` is actually deployed
-   (its exact origin, no trailing slash) — not blank; blank is only for
-   local development, where it allows every origin.
-4. Once deployed, pass the resulting `https://<service>.onrender.com` URL as
-   `previewServerUrl` to the `cloudinary-sfmc` app.
+3. Once `sfmc-embargo-demo` has its first deploy, copy its actual
+   `https://sfmc-embargo-demo-<hash>.onrender.com` URL and set it as
+   `ALLOWED_ORIGINS` on `sfmc-embargo-preview-server` (exact origin, no
+   trailing slash), then manually redeploy that service so it picks up the
+   change. This one manual step exists because the demo site's exact
+   subdomain isn't known until after its first deploy; leaving
+   `ALLOWED_ORIGINS` blank works but allows every origin, which is fine for
+   your own local testing but not once this is live for anyone to hit.
+4. Share the demo's URL with the `previewServerUrl` query param appended,
+   e.g. `https://sfmc-embargo-demo-<hash>.onrender.com/web-image?cloudName=<cloud>&apiKey=<key>&previewServerUrl=https://sfmc-embargo-preview-server-<hash>.onrender.com`
+   — anyone who opens that link can try the embargo preview flow with no
+   local setup at all.
 
 ## Known limitations / follow-ups
 
