@@ -40,3 +40,18 @@ HTTPS=false node ../node_modules/react-scripts/bin/react-scripts.js start
 Then pick an asset in your sandbox cloud that has a `token` Access Control rule
 (Cloudinary's embargo pattern). Without `previewServerUrl` set, embargoed assets
 still show the pre-existing "This asset is restricted" block.
+
+### Jumping straight to a known asset
+
+By default, clicking "Choose Image" for the first time opens the Media Library
+Widget on a flat list of all assets. To skip straight to one specific,
+already-known asset instead (handy for repeatedly testing against the same
+embargoed asset) — pass its `public_id`:
+
+```
+.../web-image?cloudName=<cloud_name>&apiKey=<api_key>&initialAsset=UTMB-D
+```
+
+This only affects the very first open, before anything has been selected —
+once an asset is chosen, clicking "Replace" always reopens on that selection
+regardless of `initialAsset`.

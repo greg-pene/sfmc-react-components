@@ -100,6 +100,7 @@ const App = () => {
     state: state,
     assetSelector: openMlw,
     previewServerUrl: parms.get('previewServerUrl'),
+    initialAsset: parms.get('initialAsset'),
     cld: cld
   };
 
