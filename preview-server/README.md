@@ -89,16 +89,18 @@ To deploy both:
    (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`,
    `CLOUDINARY_ACCESS_CONTROL_KEY`, `ALLOWED_ORIGINS`) directly in the
    dashboard — none of these are committed.
-3. Once `sfmc-embargo-demo` has its first deploy, copy its actual
-   `https://sfmc-embargo-demo-<hash>.onrender.com` URL and set it as
-   `ALLOWED_ORIGINS` on `sfmc-embargo-preview-server` (exact origin, no
+3. Once `sfmc-embargo-demo` has its first deploy, note its URL — Render uses
+   the service's `name` as its subdomain, so this is
+   `https://sfmc-embargo-demo.onrender.com` (a numeric suffix only appears
+   if that subdomain is already taken by another Render account). Set that
+   as `ALLOWED_ORIGINS` on `sfmc-embargo-preview-server` (exact origin, no
    trailing slash), then manually redeploy that service so it picks up the
-   change. This one manual step exists because the demo site's exact
-   subdomain isn't known until after its first deploy; leaving
+   change. This one manual step exists because the two services deploy
+   independently and each needs to reference the other's URL; leaving
    `ALLOWED_ORIGINS` blank works but allows every origin, which is fine for
    your own local testing but not once this is live for anyone to hit.
 4. Share the demo's URL with the `previewServerUrl` query param appended,
-   e.g. `https://sfmc-embargo-demo-<hash>.onrender.com/web-image?cloudName=<cloud>&apiKey=<key>&previewServerUrl=https://sfmc-embargo-preview-server-<hash>.onrender.com`
+   e.g. `https://sfmc-embargo-demo.onrender.com/web-image?cloudName=<cloud>&apiKey=<key>&previewServerUrl=https://sfmc-embargo-preview-server.onrender.com`
    — anyone who opens that link can try the embargo preview flow with no
    local setup at all.
 
